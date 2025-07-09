@@ -1,0 +1,18 @@
+# Definieert de taken die moeten worden uitgevoerd wanneer de workspace start
+tasks:
+  - name: Install Dependencies and Start Expo
+    init: |
+      # Installeer alle Node.js afhankelijkheden, inclusief Expo en Firebase
+      npm install --legacy-peer-deps
+    command: |
+      # Start de Expo development server met tunneling
+      npm start --tunnel
+
+# Definieert de poorten die moeten worden geopend
+ports:
+  - port: 8081 # Standaard Expo Metro Bundler poort
+    onOpen: ignore # Negeer deze poort standaard, Expo zal de tunnel-URL geven
+  - port: 19000 # Expo DevTools poort
+    onOpen: ignore
+  - port: 19001 # Expo bundler poort
+    onOpen: ignore
