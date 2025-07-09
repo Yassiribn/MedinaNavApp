@@ -1,9 +1,15 @@
 # Definieert de taken die moeten worden uitgevoerd wanneer de workspace start
 tasks:
-  - name: Install Dependencies and Start Expo
+  - name: Install Yarn, Dependencies and Start Expo
     init: |
-      # Installeer alle Node.js afhankelijkheden, inclusief Expo en Firebase
-      npm install --legacy-peer-deps
+      # Installeer Yarn globaal als het nog niet is geïnstalleerd
+      npm install -g yarn
+      # Verwijder bestaande node_modules en package-lock.json voor een schone start
+      rm -rf node_modules package-lock.json
+      # Installeer alle Node.js afhankelijkheden met Yarn
+      yarn install --force
+      # Wis de Expo cache
+      npx expo start --clear
     command: |
       # Start de Expo development server met tunneling
       npm start --tunnel
