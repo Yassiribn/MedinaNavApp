@@ -1,13 +1,11 @@
 # Definieert de taken die moeten worden uitgevoerd wanneer de workspace start
 tasks:
-  - name: Install Yarn, Dependencies and Start Expo
+  - name: Install Dependencies and Start Expo
     init: |
-      # Installeer Yarn globaal als het nog niet is geïnstalleerd
-      npm install -g yarn
       # Verwijder bestaande node_modules en package-lock.json voor een schone start
       rm -rf node_modules package-lock.json
-      # Installeer alle Node.js afhankelijkheden met Yarn
-      yarn install --force
+      # Installeer alle Node.js afhankelijkheden met --force om conflicten te negeren
+      npm install --force
       # Wis de Expo cache
       npx expo start --clear
     command: |
